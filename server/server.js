@@ -1,10 +1,24 @@
 
 const bodyParser = require('body-parser');
 const express = require('express');
+const { Mongoose } = require('mongoose');
 // const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
 const app = express();
+dotenv.config();
+
+mongoose.connect(process.env.database,
+    { useNewUrlParser: true, useUnifiedTopology: true },
+    (err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("DB OK ... !");
+        }
+    });
 
 
 ///middelwares
@@ -30,7 +44,7 @@ app.listen(1375, (err) => {
     if (err) {
         console.log(err)
     } else {
-        console.log("good");
+        console.log("SERVER OK ... !");
     }
 })
 
