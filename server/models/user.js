@@ -4,9 +4,10 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
 
     name: String,
-    email: { tyop: string, require: true, unique: true },
-    password: { type: string, require: true },
+    email: { type: String, require: true, unique: true },
+    password: { type: String, require: true },
     address: { type: Schema.Types.ObjectId, ref: "Address" }
 });
 
 module.exports = mongoose.model("user", userSchema);
+
