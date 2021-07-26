@@ -33,8 +33,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const ProductRouter = require("./routes/product");
 const CategoryRouter = require("./routes/category");
+const ownerRouter = require('./routes/owner');
 app.use("/api", ProductRouter);
 app.use("/api", CategoryRouter);
+app.use("/api", ownerRouter);
 
 
 
