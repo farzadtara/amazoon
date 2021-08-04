@@ -1,10 +1,17 @@
 const router = require("express").Router();
 const Product = require("../models/product");
+const multer = require('multer');
+const upload = multer();
+
+
 
 ///post request -- creat new product
-router.post('/products', async (req, res) => {
+router.post('/products', upload.none() , async (req, res) => {
     try {
         let product = new Product();
+        product.categoryId = req.body.categoryId;
+        product.ownerId = req.body.ownerId;
+        product.price = req.body.price;
         product.title = req.body.title;
         product.description = req.body.description;
         product.photo = req.body.photo;
@@ -14,7 +21,9 @@ router.post('/products', async (req, res) => {
 
         res.json({
             status: true,
-            message: "product post OK ...!"
+            message: "product post OK ...!",
+            product:product
+
         });
     } catch (err) {
         res.status(500).json({

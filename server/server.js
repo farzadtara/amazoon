@@ -2,10 +2,10 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const { Mongoose } = require('mongoose');
-// const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cors = require('cors');
 
 const User = require('./models/user.js');
 
@@ -24,7 +24,8 @@ mongoose.connect(process.env.database,
 
 
 ///middelwares
-app.use(morgan('div'));
+app.use(cors());
+app.use(morgan());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 

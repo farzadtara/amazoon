@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const owner = require('../models/owner');
+const Owner = require('../models/owner');
 
 ///post - creat
 
 router.post("/owner", async (req, res) => {
     try {
-        let owner = new owner();
+        let owner = new Owner();
         owner.name = req.body.name;
         owner.about = req.body.about;
 
@@ -27,7 +27,7 @@ router.post("/owner", async (req, res) => {
 
 router.get("/owner", async (req, res) => {
     try {
-        let owner = await owner.find();
+        let owner = await Owner.find();
 
         res.json({
             success: true,

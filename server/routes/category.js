@@ -1,7 +1,9 @@
 const router = require("express").Router();
 const Category = require("../models/category");
+const multer = require('multer');
+const upload = multer();
 ///post
-router.post("/category", async (req, res) => {
+router.post("/category", upload.none(),async (req, res) => {
     try {
         let category = new Category();
         category.title = req.body.title;
@@ -27,7 +29,7 @@ router.get("/category", async (req, res) => {
         res.json({
             success: true,
             message: "GET OK ...!",
-            cat: category
+            category: category
 
         });
 
